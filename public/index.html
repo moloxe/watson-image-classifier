@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>WIC</title>
+</head>
+
+<body>
+    <div class="form m-5">
+
+        <h1>Watson Image Classifier</h1>
+
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">URL</label>
+            <input id="input-url" type="text" class="form-control" id="inputDefault"
+                value="https://snov.io/glossary/wp-content/uploads/2019/10/photo-1568430462989-44163eb1752f.jpeg">
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="getVRresultsByUrl()">Classify</button>
+
+        <div id="result" class="m-5"></div>
+
+        <div id="loading" style="display: none;">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
