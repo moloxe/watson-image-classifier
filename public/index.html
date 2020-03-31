@@ -21,7 +21,21 @@
 
         <button type="button" class="btn btn-primary" onclick="getVRresultsByUrl()">Classify</button>
 
-        <div id="result" class="m-5"></div>
+
+        <div class="container" id="result" style="display: none;">
+            <div class="row">
+                <div class="col-sm m-5">
+                    <h1 class="text-center m-3" id="title"></h1>
+                    <img id="img" src="" class="rounded mx-auto d-block w-75">
+                    <!-- <img id="img" src="" class="rounded d-block w-75 m-3"> -->
+                    
+                </div>
+                <div class="col-sm m-3">
+                    <ul class="list-group" id="predictions">
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div id="loading" style="display: none;">
             <div class="d-flex justify-content-center">

@@ -13,7 +13,6 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "electron": "^8.2.0",
-    "ibm-watson": "^5.4.0",
-    "json-formatter-js": "^2.3.4"
+    "ibm-watson": "^5.4.0"
   }
 }
