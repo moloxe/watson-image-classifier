@@ -14,9 +14,18 @@
         <h1>Watson Image Classifier</h1>
 
         <div class="form-group">
-            <label class="col-form-label" for="inputDefault">URL</label>
-            <input id="input-url" type="text" class="form-control" id="inputDefault"
+
+            <label class="col-form-label" for="inputDefault">Api Key</label>
+            <input id="apikey" type="text" class="form-control" value="7IcEyaXW_0oVtgZ4wDyGv4rGixcQ4UXLypih3d6aUuy2">
+
+            <label class="col-form-label" for="inputDefault">Service URL</label>
+            <input id="service-url" type="text" class="form-control"
+                value="https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/af74898f-cfa5-42c5-be4e-c186381bb0b3">
+
+            <label class="col-form-label" for="inputDefault">Image URL</label>
+            <input id="input-url" type="text" class="form-control"
                 value="https://snov.io/glossary/wp-content/uploads/2019/10/photo-1568430462989-44163eb1752f.jpeg">
+
         </div>
 
         <button type="button" class="btn btn-primary" onclick="getVRresultsByUrl()">Classify</button>
@@ -26,9 +35,9 @@
             <div class="row">
                 <div class="col-sm m-5">
                     <h1 class="text-center m-3" id="title"></h1>
-                    <img id="img" src="" class="rounded mx-auto d-block w-75">
+                    <img id="img" src="" class="rounded mx-auto d-block w-100">
                     <!-- <img id="img" src="" class="rounded d-block w-75 m-3"> -->
-                    
+
                 </div>
                 <div class="col-sm m-3">
                     <ul class="list-group" id="predictions">

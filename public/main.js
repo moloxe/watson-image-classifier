@@ -8,11 +8,24 @@ async function getVRresultsByUrl(ev) {
     document.getElementById('loading').style.display = 'block'
     document.getElementById('result').style.display = 'none'
 
+    const apikey = document.getElementById('apikey').value
+    const serviceUrl = document.getElementById('service-url').value
+    await ipcRenderer.invoke('load-credentials', {
+        apikey,
+        serviceUrl
+    })
+
     await ipcRenderer.invoke('get-visual-recognition-results-by-url', url).then(async (result) => {
 
-
         const ul = document.getElementById('predictions')
+        ul.innerHTML = ""
+
+        await result.sort(function (a, b) {
+            return b.score - a.score;
+        });
+
         let best = [0, ""]
+
         await result.forEach(ele => {
 
             if (ele.score > best[0])
@@ -20,7 +33,7 @@ async function getVRresultsByUrl(ev) {
 
             const li = document.createElement('li')
             li.className = "list-group-item"
-            const txt = `${ele.class}: ${ele.score}`
+            const txt = `${parseFloat(ele.score).toFixed(2)}: ${ele.class}`
             li.appendChild(document.createTextNode(txt))
             ul.appendChild(li)
         });

@@ -4,19 +4,31 @@ const {
     IamAuthenticator
 } = require('ibm-watson/auth');
 
-require('dotenv').config()
 
 module.exports = function (ipcMain) {
 
-    const visualRecognition = new VisualRecognitionV3({
-        version: '2018-03-19',
-        authenticator: new IamAuthenticator({
-            apikey: process.env.apikey,
-        }),
-        url: process.env.url,
-    });
+    let visualRecognition = null
+    let apikey = null
+    let serviceUrl = null
+
+    ipcMain.handle('load-credentials', async (event, obj) => {
+
+        if (apikey == obj.apikey && serviceUrl == obj.serviceUrl)
+            return
+        apikey = obj.apikey
+        serviceUrl = obj.serviceUrl
+        visualRecognition = await new VisualRecognitionV3({
+            version: '2018-03-19',
+            authenticator: new IamAuthenticator({
+                apikey,
+            }),
+            url: serviceUrl,
+        });
+    })
 
     ipcMain.handle('get-visual-recognition-results-by-url', async (event, url) => {
+
+        if (!visualRecognition) return {}
         const classifyParams = {
             url
         };
@@ -30,6 +42,7 @@ module.exports = function (ipcMain) {
             });
         return result
     })
+
 
     console.log("ipc-configured!")
 }

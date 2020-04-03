@@ -11,8 +11,8 @@
   "author": "francoMG",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "electron": "^8.2.0",
+    "electron-packager": "^14.2.1",
     "ibm-watson": "^5.4.0"
   }
 }
